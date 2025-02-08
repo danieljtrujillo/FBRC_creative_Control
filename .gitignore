@@ -6,6 +6,13 @@
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
+/Unity/FBRC_Hackathon/Library
+Unity/FBRC_Hackathon/Library
+/Library
+/Unity/FBRC_Hackathon/FBRC_Hackathon_BurstDebugInformation_DoNotShip
+Unity/FBRC_Hackathon/FBRC_Hackathon_BurstDebugInformation_DoNotShip
+/FBRC_Hackathon_BurstDebugInformation_DoNotShip
+
 
 # Unity3D generated meta files
 *.pidb.meta

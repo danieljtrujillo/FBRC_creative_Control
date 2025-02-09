@@ -1,0 +1,19 @@
+project-root/
+├── index.html
+├── styles/
+│   └── main.css
+├── js/
+│   ├── main.js
+│   ├── SceneManager.js
+│   ├── CameraManager.js
+│   ├── LightingSetup.js
+│   ├── AnimationController.js
+│   ├── ModelLoader.js
+│   └── RecordingManager.js
+├── assets/
+│   ├── models/
+│   │   └── .gitkeep
+│   └── textures/
+│       └── .gitkeep
+└── lib/
+    └── CCapture.min.js

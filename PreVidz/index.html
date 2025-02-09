@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Previsualization Tool</title>
+    <link rel="stylesheet" href="styles/main-css.css">
+</head>
+<body>
+    <div id="scene-container"></div>
+    
+    <div id="controls">
+        <div id="animation-controls">
+            <button id="play-btn" class="control-btn">Play</button>
+            <button id="pause-btn" class="control-btn">Pause</button>
+            <button id="stop-btn" class="control-btn">Stop</button>
+        </div>
+        
+        <div id="recording-controls">
+            <button id="record-btn" class="control-btn">Record</button>
+            <button id="save-btn" class="control-btn" disabled>Save</button>
+        </div>
+
+        <div id="camera-controls">
+            <select id="camera-select">
+                <option value="main">Main Camera</option>
+                <option value="side">Side View</option>
+                <option value="top">Top View</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Three.js and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ccapture.js@1.1.0/build/CCapture.min.js"></script>
+
+    <!-- Application scripts -->
+    <script src="src/js/ModelLoader.js"></script>
+    <script src="src/js/LightingSetup.js"></script>
+    <script src="src/js/CameraManager.js"></script>
+    <script src="src/js/AnimationController.js"></script>
+    <script src="src/js/RecordingManager.js"></script>
+    <script src="src/js/SceneManager.js"></script>
+    <script src="src/js/main.js"></script>
+</body>
+</html>

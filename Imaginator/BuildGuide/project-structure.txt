@@ -1,0 +1,39 @@
+project_root/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   └── api/
+│   │       ├── __init__.py
+│   │       ├── routes.py
+│   │       └── endpoints/
+│   │           ├── script_processor.py
+│   │           ├── luma_handler.py
+│   │           ├── video_generator.py
+│   │           └── tripo_handler.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── script_analyzer.py
+│   │   ├── luma_service.py
+│   │   ├── video_service.py
+│   │   └── tripo_service.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ScriptUpload/
+│   │   │   ├── CharacterPreview/
+│   │   │   ├── VideoGenerator/
+│   │   │   └── ModelViewer/
+│   │   ├── services/
+│   │   │   ├── api.js
+│   │   │   └── three.js
+│   │   ├── store/
+│   │   │   └── index.js
+│   │   └── App.jsx
+│   ├── package.json
+│   └── vite.config.js
+│
+└── docker-compose.yml

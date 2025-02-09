@@ -1,0 +1,196 @@
+This provides you with a solid foundation for your application. Here's what each part does:
+
+Backend (FastAPI):
+
+
+Modular structure with separate endpoints for each step
+Configuration management for API keys
+CORS middleware for frontend communication
+Clear separation of concerns between routes and services
+
+
+Frontend (React):
+
+
+Route-based navigation between steps
+Initial ScriptUpload component with drag-and-drop
+API service layer for backend communication
+Basic styling with Tailwind CSS
+
+To get started:
+
+Backend setup:
+
+cd backend
+python -m venv venv
+source venv/bin/activate  # or `venv\Scripts\activate` on Windows
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+
+Frontend setup:
+
+cd frontend
+npm install
+npm run dev
+
+fastapi
+python-multipart
+uvicorn
+pydantic-settings
+python-dotenv
+httpx
+
+Frontend (package.json):
+
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0",
+    "axios": "^1.6.7",
+    "@material-ui/core": "^4.12.4",
+    "three": "^0.161.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.12"
+  }
+}
+
+API REFERENCES:|
+
+
+Luma AI https://docs.lumalabs.ai/docs/api
+
+Image Generation
+
+import requests
+import time
+from lumaai import LumaAI
+
+client = LumaAI()
+
+generation = client.generations.image.create(
+  prompt="A teddy bear in sunglasses playing electric guitar and dancing",
+)
+completed = False
+while not completed:
+  generation = client.generations.get(id=generation.id)
+  if generation.state == "completed":
+    completed = True
+  elif generation.state == "failed":
+    raise RuntimeError(f"Generation failed: {generation.failure_reason}")
+  print("Dreaming")
+  time.sleep(2)
+
+image_url = generation.assets.image
+
+# download the image
+response = requests.get(image_url, stream=True)
+with open(f'{generation.id}.jpg', 'wb') as file:
+    file.write(response.content)
+print(f"File downloaded as {generation.id}.jpg")
+
+With start frame
+With start frame, loop
+With ending frame
+With start and end keyframes
+
+
+
+Video Generation
+import requests
+import time
+from lumaai import LumaAI
+
+client = LumaAI()
+
+generation = client.generations.create(
+  prompt="A teddy bear in sunglasses playing electric guitar and dancing",
+)
+completed = False
+while not completed:
+  generation = client.generations.get(id=generation.id)
+  if generation.state == "completed":
+    completed = True
+  elif generation.state == "failed":
+    raise RuntimeError(f"Generation failed: {generation.failure_reason}")
+  print("Dreaming")
+  time.sleep(3)
+
+video_url = generation.assets.video
+
+# download the video
+response = requests.get(video_url, stream=True)
+with open(f'{generation.id}.mp4', 'wb') as file:
+    file.write(response.content)
+print(f"File downloaded as {generation.id}.mp4")
+
+Extend video
+Reverse extend video
+Extend a video with an end-frame
+Reverse extend a video with a start-frame
+Interpolate between 2 videos
+
+
+Generations
+Get generation with id
+Python
+generation = client.generations.get(id="d1968551-6113-4b46-b567-09210c2e79b0")
+List all generations
+Python
+generation = client.generations.list(limit=100, offset=0)
+Delete generation
+Python
+generation = client.generations.delete(id="d1968551-6113-4b46-b567-09210c2e79b0")
+Get all supported camera motions
+Python
+supported_camera_motions = client.generations.camera_motion.list()
+How to use camera motion
+Camera is controlled by language in Dream Machine. You can find supported camera moves by calling the Camera Motions endpoint. This will return an array of supported camera motion strings (like "camera orbit left") which can be used in prompts. In addition to these exact strings, syntactically similar phrases also work, though there can be mismatches sometimes.
+
+How to get a callback when generation has an update
+It will get status updates (dreaming/completed/failed)
+It will also get the video url as part of it when completed
+It's a POST endpoint you can pass, and request body will have the generation object in it
+It expected to be called multiple times for a status
+If the endpoint returns a status code other than 200, it will be retried max 3 times with 100ms delay and the request has a 5s timeout
+example
+Python
+generation = await client.generations.create(
+    prompt="A teddy bear in sunglasses playing electric guitar and dancing",
+    callback_url="<your_api_endpoint_here>"
+)
+
+
+
+
+
+Tripo3D’s API documentation.
+
+https://platform.tripo3d.ai/docs/introduction
+
+Draft model generation
+Refine a draft model
+Animate the model
+Stylization and conversion
+
+
+Making Request
+export APIKEY="tsk_***"
+curl https://api.tripo3d.ai/v2/openapi/task \
+  -H 'Content-Type: application/json' \
+  -H "Authorization: Bearer ${APIKEY}" \
+  -d '{"type": "text_to_model", "prompt": "a small cat"}'
+unset APIKEY
+
+Endpoints
+General
+Task
+Upload
+Generation
+Animation
+Post Process
+Schema
+Wallet
